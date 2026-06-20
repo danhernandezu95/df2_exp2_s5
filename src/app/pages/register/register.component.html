@@ -1,0 +1,32 @@
+
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header"><h3>Registro de Usuario</h3></div>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="registrar()">
+        <div class="mb-3"><label>Nombre</label><input formControlName="nombre" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['nombre'].touched && f['nombre'].invalid">El nombre es obligatorio.</div>
+        <div class="mb-3"><label>Usuario</label><input formControlName="usuario" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['usuario'].touched && f['usuario'].invalid">El usuario es obligatorio.</div>
+        <div class="mb-3"><label>Correo</label><input formControlName="correo" type="email" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['correo'].touched && f['correo'].hasError('required')">El correo es obligatorio.</div>
+        <div class="text-danger small" *ngIf="f['correo'].touched && f['correo'].hasError('email')">Formato de correo inválido.</div>
+        <div class="mb-3"><label>Fecha de nacimiento</label><input formControlName="fechaNacimiento" type="date" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['fechaNacimiento'].touched && f['fechaNacimiento'].hasError('required')">La fecha de nacimiento es obligatoria.</div>
+        <div class="text-danger small" *ngIf="f['fechaNacimiento'].touched && f['fechaNacimiento'].hasError('edadMinima')">Debes tener al menos 13 años.</div>
+        <div class="mb-3"><label>Dirección de despacho (opcional)</label><input formControlName="direccionDespacho" class="form-control"></div>
+        <div class="mb-3"><label>Contraseña</label><input formControlName="password" type="password" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['password'].touched && f['password'].hasError('required')">La contraseña es obligatoria.</div>
+        <div class="text-danger small" *ngIf="f['password'].touched && (f['password'].hasError('minlength') || f['password'].hasError('maxlength'))">La contraseña debe tener entre 6 y 18 caracteres.</div>
+        <div class="text-danger small" *ngIf="f['password'].touched && f['password'].hasError('pattern')">Debe contener al menos una mayúscula y un número.</div>
+        <div class="mb-3"><label>Repetir contraseña</label><input formControlName="repetirPassword" type="password" class="form-control"></div>
+        <div class="text-danger small" *ngIf="f['repetirPassword'].touched && f['repetirPassword'].hasError('required')">Debes repetir la contraseña.</div>
+        <div class="text-danger small" *ngIf="registerForm.touched && registerForm.hasError('passwordsNoCoinciden')">Las contraseñas no coinciden.</div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-success" type="submit">Registrar</button>
+          <button class="btn btn-secondary" type="button" (click)="limpiarFormulario()">Limpiar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

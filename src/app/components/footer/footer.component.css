@@ -1,0 +1,17 @@
+.footer {
+    border-top: 3px solid #dc3545;
+}
+
+.footer-link {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+}
+
+.social-icons i {
+    font-size: 1.3rem;
+}

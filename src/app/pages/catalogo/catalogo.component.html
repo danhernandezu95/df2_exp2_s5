@@ -1,0 +1,29 @@
+<div class="row">
+
+    <div class="col-md-3 mb-3" *ngFor="let producto of productos">
+
+        <div class="card h-100">
+
+            <img [src]="producto.image" class="card-img-top">
+
+            <div class="card-body">
+
+                <h5>{{producto.name}}</h5>
+
+                <p>{{producto.description}}</p>
+
+                <p>${{producto.price}}</p>
+
+                <p><button class="btn btn-success" (click)="agregar(producto)">
+
+                        Agregar
+
+                    </button></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
