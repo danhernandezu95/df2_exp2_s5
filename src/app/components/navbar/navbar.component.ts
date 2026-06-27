@@ -7,6 +7,16 @@ import {
 } from '@angular/router';
 import { filter } from 'rxjs';
 
+/**
+ * Componente Navbar.
+ *
+ * Muestra la barra de navegación de la aplicación y el nombre
+ * del usuario autenticado. El nombre se obtiene desde Session Storage
+ * y se actualiza automáticamente con los cambios de navegación.
+ *
+ * @author Daniel Hernandez
+ * @version 1.1
+ */
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -19,40 +29,64 @@ import { filter } from 'rxjs';
 })
 export class NavbarComponent {
 
+  /**
+   * Nombre del usuario actualmente autenticado.
+   */
   usuario = 'Invitado';
 
+  /**
+   * Constructor del componente Navbar.
+   *
+   * @param router Servicio de Angular para navegación.
+   */
   constructor(
     private router: Router
   ) {}
 
-  ngOnInit() {
-
+  /**
+   * Inicializa el componente y carga el usuario.
+   */
+  ngOnInit(): void {
     this.cargarUsuario();
 
     this.router.events
       .pipe(
-        filter(
-          event => event instanceof NavigationEnd
-        )
+        filter(event => event instanceof NavigationEnd)
       )
       .subscribe(() => {
-
         this.cargarUsuario();
-
       });
-
   }
 
-  cargarUsuario() {
+  /**
+   * Obtiene el usuario desde sessionStorage.
+   */
+  cargarUsuario(): void {
 
     if (typeof window !== 'undefined') {
 
       this.usuario =
-        sessionStorage.getItem(
-          'usuarioActivo'
-        ) || 'Invitado';
+        sessionStorage.getItem('usuarioActivo') || 'Invitado';
 
     }
+
+  }
+
+  /**
+   * Cierra la sesión del usuario.
+   *
+   * Elimina el usuario activo de sessionStorage
+   * y actualiza el navbar.
+   */
+  logout(): void {
+
+    if (typeof window === 'undefined') return;
+
+    sessionStorage.removeItem('usuarioActivo');
+
+    this.cargarUsuario();
+
+    this.router.navigate(['/']);
 
   }
 

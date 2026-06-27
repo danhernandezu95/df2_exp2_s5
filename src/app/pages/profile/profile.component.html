@@ -1,0 +1,37 @@
+<div class="container mt-4">
+
+  <h2>Perfil de Usuario</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="guardarCambios()">
+
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input class="form-control" formControlName="nombre">
+    </div>
+
+    <div class="mb-3">
+      <label>Usuario</label>
+      <input class="form-control" formControlName="usuario">
+    </div>
+
+    <div class="mb-3">
+      <label>Correo</label>
+      <input class="form-control" formControlName="correo">
+    </div>
+
+    <div class="mb-3">
+      <label>Contraseña</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+
+    <button class="btn btn-primary me-2" type="submit">
+      Guardar cambios
+    </button>
+
+    <button class="btn btn-secondary" type="button" (click)="resetForm()">
+      Restaurar
+    </button>
+
+  </form>
+
+</div>

@@ -2,6 +2,14 @@
 
   <h2>Carrito de Compras</h2>
 
+  <div class="mb-3 text-end">
+    <button
+      class="btn btn-danger"
+      (click)="limpiarCarrito()">
+      Limpiar carrito
+    </button>
+  </div>
+
   <div
     class="card mb-3"
     *ngFor="let producto of carrito">

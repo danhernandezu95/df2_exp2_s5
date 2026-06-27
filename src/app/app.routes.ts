@@ -5,37 +5,43 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoverComponent } from './pages/recover/recover.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
 
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
 
   {
-    path:'catalogo',
-    component:CatalogoComponent
+    path: 'catalogo',
+    component: CatalogoComponent
   },
 
   {
-    path:'carrito',
-    component:CarritoComponent
+    path: 'carrito',
+    component: CarritoComponent
   },
 
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
 
   {
-    path:'registro',
-    component:RegisterComponent
+    path: 'registro',
+    component: RegisterComponent
   },
 
   {
-    path:'recuperar',
-    component:RecoverComponent
+    path: 'recuperar',
+    component: RecoverComponent
+  },
+
+  {
+    path: 'perfil',
+    component: ProfileComponent
   }
 
 ];

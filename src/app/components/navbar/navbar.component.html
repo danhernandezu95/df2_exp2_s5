@@ -1,57 +1,98 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand fw-bold" routerLink="/">W40K</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span
-                class="navbar-toggler-icon"></span></button>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="nav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Categorías
 
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">Inicio</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Categorías
                     </a>
 
                     <ul class="dropdown-menu">
 
                         <li>
-                            <a class="dropdown-item" [routerLink]="['/catalogo']" [queryParams]="{categoria:'All'}">
+                            <a class="dropdown-item"
+                               [routerLink]="['/catalogo']"
+                               [queryParams]="{categoria:'All'}">
                                 Todos
                             </a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" [routerLink]="['/catalogo']" [queryParams]="{categoria:'Mazo'}">
+                            <a class="dropdown-item"
+                               [routerLink]="['/catalogo']"
+                               [queryParams]="{categoria:'Mazo'}">
                                 Mazos
                             </a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" [routerLink]="['/catalogo']" [queryParams]="{categoria:'Mesa'}">
+                            <a class="dropdown-item"
+                               [routerLink]="['/catalogo']"
+                               [queryParams]="{categoria:'Mesa'}">
                                 Juegos de Mesa
                             </a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" [routerLink]="['/catalogo']"
-                                [queryParams]="{categoria:'Accesorio'}">
+                            <a class="dropdown-item"
+                               [routerLink]="['/catalogo']"
+                               [queryParams]="{categoria:'Accesorio'}">
                                 Accesorios
                             </a>
                         </li>
-                    </ul>
 
+                    </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Catálogo</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/carrito">Carrito</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/registro">Registro</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/recuperar">Recuperar</a></li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/catalogo">Catálogo</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/carrito">Carrito</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/registro">Registro</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/recuperar">Recuperar</a>
+                </li>
+
+                <li class="nav-item" *ngIf="usuario !== 'Invitado'">
+                    <a class="nav-link" routerLink="/perfil">
+                        Mi perfil
+                    </a>
+                </li>
+
+                <li class="nav-item" *ngIf="usuario !== 'Invitado'">
+                    <a class="nav-link text-danger" href="#" (click)="logout()">
+                        Cerrar sesión
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <span class="nav-link" id="usuarioNav">
                         {{usuario}}
                     </span>
                 </li>
+
             </ul>
         </div>
     </div>

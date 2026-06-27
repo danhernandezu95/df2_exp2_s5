@@ -4,5 +4,5 @@ export interface Usuario {
   usuario:string;
   correo:string;
   password:string;
-
+  direccion:string;
 }
